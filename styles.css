@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --cor-white: #ffffff;
+  --cor-yellow: #ffff00;
+  --cor-footer: #65716d;
+  --cor-black: #000000;
+}
+body {
+  background-color: #6a7b75;
+  font-family: "Roboto", sans-serif;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  background-color: var(--cor-footer);
+  color: var(--cor-white);
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 1rem;
+}
+
+#campinho {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#campinho img {
+  height: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 4rem;
+}
+
+h1 {
+  color: var(--cor-white);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: var(--cor-footer);
+
+  border-radius: 8px;
+
+  width: 24rem;
+  height: 20rem;
+}
+
+.input {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 18px;
+  width: calc(100% - 70px);
+  height: 2.5rem;
+
+  background-color: var();
+  color: var(--cor-black);
+  font-size: 20px;
+
+  padding: 0.5rem;
+
+  background-color: aliceblue;
+}
+
+label {
+  color: var(--cor-white);
+  font-size: 20px;
+  padding: 1rem;
+}
+.add {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.button-add {
+  border: none;
+  outline: none;
+  background-color: var(--cor-footer);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.button-add img {
+  /* margin-left: 0.5rem; */
+  height: 2.2rem;
+  width: 2.2rem;
+
+  margin-top: 0.15rem;
+  margin-left: 0.2rem;
+  margin-bottom: 0;
+}
+
+.button-add :hover {
+  transform: scale(1.1);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--cor-footer);
+  color: var(--cor-white);
+  width: 100%;
+}
+
+.footer span:first-child {
+  color: var(--cor-yellow);
+}
+.footer span:last-child {
+  color: var(--cor-white);
+}
+
+.logo-footer {
+  font-family: "Tektur", sans-serif;
+  font-size: 1rem;
+  background-color: var(--cor-footer);
+  text-decoration: none;
+}
+
+.footer a {
+  background-color: var(--cor-footer);
+}
+.footer img {
+  background-color: var(--cor-footer);
+}
+.footer p {
+  background-color: var(--cor-footer);
+}
+
+.links-footer {
+  display: flex;
+  align-items: center;
+  width: 6rem;
+  justify-content: space-around;
+}
