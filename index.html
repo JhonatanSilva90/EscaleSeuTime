@@ -26,28 +26,48 @@
           <div>
             <label>Nome do Jogador</label>
             <div class="add">
-              <input class="input" type="text" />
-              <button class="button-add">
-                <img src="/images/plus.png" alt="" />
-              </button>
+              <input id="nomeJogador" class="input" type="text" />
             </div>
           </div>
           <div>
             <label>Número do Jogador</label>
             <div class="add">
-              <input class="input" type="text" />
-              <button class="button-add">
-                <img src="/images/plus.png" alt="" />
-              </button>
+              <input id="numeroJogador" class="input" type="text" />
             </div>
           </div>
           <div>
-            <label>Nome do Técnico</label>
+            <label>Posição</label>
             <div class="add">
-              <input class="input" type="text" />
-              <button class="button-add">
-                <img src="/images/plus.png" alt="" />
-              </button>
+              <input
+                id="posicao"
+                class="input"
+                type="text"
+                name="posições"
+                list="listaPosições"
+              />
+
+              <datalist id="listaPosições">
+                <option value="Goleiro"></option>
+                <option value="Lateral Direiro"></option>
+                <option value="Lateral Esquerdo"></option>
+                <option value="Zagueiro"></option>
+                <option value="Meio Campo"></option>
+                <option value="Atacante"></option>
+              </datalist>
+            </div>
+          </div>
+          <div>
+            <div class="btn-add">
+              <button>Adicionar</button>
+            </div>
+            <div>
+              <label>Nome do Técnico</label>
+              <div class="add">
+                <input id="tecnico" class="input" type="text" />
+              </div>
+            </div>
+            <div class="btn-add">
+              <button>Adicionar</button>
             </div>
           </div>
         </div>
