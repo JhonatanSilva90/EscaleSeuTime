@@ -51,7 +51,6 @@ h1 {
   margin-bottom: 1rem;
 }
 #inputs {
-  display: flex;
   flex-direction: column;
   justify-content: center;
 
@@ -60,14 +59,16 @@ h1 {
   border-radius: 8px;
 
   width: 24rem;
-  height: 28rem;
+  height: 34rem;
+
+  border: 1px solid red;
+  text-align: center;
 }
 
 .input {
   border: none;
   outline: none;
   border-radius: 8px;
-  font-size: 18px;
   width: calc(100% - 70px);
   height: 2.5rem;
 
@@ -77,6 +78,10 @@ h1 {
   padding: 0.5rem;
 
   background-color: aliceblue;
+
+  text-align: center;
+
+  border: 1px solid red;
 }
 
 label {
