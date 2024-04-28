@@ -14,16 +14,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-#header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-
-  background-color: var(--cor-footer);
-  color: var(--cor-white);
-}
-
 #main {
   display: flex;
   justify-content: center;
@@ -32,11 +22,12 @@ body {
   margin-top: 1rem;
 }
 
-#campinho {
+/* #campinho {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  border: 1px solid red;
+} */
 
 #campinho img {
   height: 52rem;
@@ -107,6 +98,17 @@ label {
 .btn-add :hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+/* Estilizando o dados do jogador a serem exibidos na tela */
+.jogador {
+  background-color: #f0f0f0; /* Cor de fundo */
+  border: none;
+  border-radius: 5%;
+  padding: 10px; /* Espaçamento interno */
+  margin-bottom: 5px; /* Margem inferior */
+  display: inline-block;
+  /* Outros estilos conforme desejado */
 }
 
 .footer {
