@@ -10,21 +10,49 @@
       href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&display=swap"
       rel="stylesheet"
     />
-    <title>Escalação Futebol</title>
+    <link rel="shortcut icon" href="/images/cartola.png" type="image/x-icon" />
+    <title>Cartola - Paixão, Escalação, Zoação</title>
   </head>
   <body>
-    <!-- <header id="header">
-      <h1>Escale seu Time</h1>
-    </header> -->
+    <header id="header">
+      <h1>SUA ESCALAÇÃO</h1>
+      <div class="add">
+        <label for="">ESQUEMA TÁTICO</label>
+        <input
+          id="esquemaInput"
+          class="input"
+          type="text"
+          name="posicaoJogador"
+          list="esquemaTaticoList"
+        />
+
+        <datalist id="esquemaTaticoList" style="text-align: center">
+          <option value="4-4-2"></option>
+          <option value="4-3-3"></option>
+          <option value="3-5-2"></option>
+        </datalist>
+      </div>
+    </header>
     <main>
       <div id="main">
-        <div id="inputs">
-          <h1>Escalar Time</h1>
+        <div
+          id="campinho"
+          style="
+            position: relative;
+            top: 6rem;
+            background-image: url('/images/campinho-sem-borda.svg');
+            height: 832px;
+            width: 572px;
+            background-repeat: no-repeat;
+            background-size: cover;
+          "
+        ></div>
+        <!-- <div id="inputs">
           <div id="esquemaTatico">
-            <label for="">Defina seu esquema tático</label>
+            <label for="">Esquema Tático</label>
             <div class="add">
               <input
-                id="esquema"
+                id="esquemaInput"
                 class="input"
                 type="text"
                 name="posicaoJogador"
@@ -36,52 +64,11 @@
                 <option value="4-3-3"></option>
                 <option value="3-5-2"></option>
               </datalist>
-            </div>
-          </div>
+            </div> -->
 
-          <div>
-            <label>Nome do Jogador</label>
-            <div class="add">
-              <input id="nomeJogador" class="input" type="text" />
-            </div>
-          </div>
-          <div>
-            <label>Número do Jogador</label>
-            <div class="add">
-              <input id="numeroJogador" class="input" type="text" />
-            </div>
-          </div>
-          <div>
-            <label>Posição</label>
-            <div class="add">
-              <input
-                id="posicao"
-                class="input"
-                type="text"
-                name="posições"
-                list="listaPosições"
-              />
-
-              <datalist id="listaPosições">
-                <option value="Goleiro"></option>
-                <option value="Lateral Direiro"></option>
-                <option value="Lateral Esquerdo"></option>
-                <option value="Zagueiro"></option>
-                <option value="Meio Campo"></option>
-                <option value="Atacante"></option>
-              </datalist>
-            </div>
-          </div>
-          <div>
-            <div>
-              <label>Nome do Técnico</label>
-              <div class="add">
-                <input id="tecnico" class="input" type="text" />
-              </div>
-            </div>
-            <div class="btn-add">
+            <!-- <div class="btn-add">
               <button>Adicionar</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
