@@ -29,17 +29,19 @@ header {
 h1 {
   color: var(--cor-white);
   text-align: center;
-  /* margin-bottom: 1rem; */
 }
-#inputs {
-  display: inline-flex;
 
+.add {
+  display: flex;
   justify-content: center;
-  background-color: var(--cor-footer);
-  border-radius: 8px;
-  width: 24rem;
+  align-items: center;
+  padding: 0.5rem;
 }
-
+label {
+  color: var(--cor-white);
+  font-size: 12px;
+  padding: 1rem;
+}
 .input {
   border: none;
   outline: none;
@@ -47,22 +49,29 @@ h1 {
 
   height: 2.5rem;
   color: var(--cor-black);
-  /* font-size: 20px; */
   padding: 0.5rem;
   background-color: aliceblue;
   text-align: center;
 }
-
-label {
+#resetButton {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 6px;
+  border: none;
+  margin-left: 0.5rem;
   color: var(--cor-white);
-  font-size: 12px;
-  padding: 1rem;
+  background-color: rgb(255, 165, 0);
+  transition: 0.5s;
 }
-.add {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: 0.5rem;
+#resetButton:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: rgb(226, 150, 11);
+}
+
+.addButton:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 #main {
@@ -79,40 +88,8 @@ label {
   align-items: center;
   justify-content: center;
 }
-
-.btn-add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  transition: 0.1s;
-}
-
-.btn-add button {
-  width: 6rem;
-  height: 2rem;
-  background-color: rgb(50, 168, 82);
-  border-radius: 8px;
-  color: var(--cor-white);
-  border: none;
-  font-size: 16px;
-  margin-bottom: 0.5rem;
-}
-
-.btn-add :hover {
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-/* Estilizando o dados do jogador a serem exibidos na tela */
-.jogador {
-  background-color: #f0f0f0; /* Cor de fundo */
-  border: none;
-  border-radius: 5%;
-  padding: 10px; /* Espaçamento interno */
-  margin-bottom: 5px; /* Margem inferior */
-  display: inline-block;
-  /* Outros estilos conforme desejado */
+.addJogador:hover {
+  transform: scale(1.2);
 }
 
 .footer {
@@ -142,17 +119,6 @@ label {
   background-color: var(--cor-footer);
   text-decoration: none;
 }
-
-.footer a {
-  background-color: var(--cor-footer);
-}
-.footer img {
-  background-color: var(--cor-footer);
-}
-.footer p {
-  background-color: var(--cor-footer);
-}
-
 .links-footer {
   display: flex;
   align-items: center;

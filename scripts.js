@@ -1,27 +1,3 @@
-// // Criação do elemento header
-// var header = document.createElement("header");
-// header.setAttribute("id", "header");
-
-// // Aplicando estilos CSS
-// header.style.display = "flex";
-// header.style.alignItems = "center";
-// header.style.justifyContent = "center";
-// header.style.padding = "1rem";
-// header.style.backgroundColor = "var(--cor-footer)";
-// header.style.color = "var(--cor-white)";
-// header.style.position = "fixed"; // Adicionando posição fixa para manter no topo
-// header.style.width = "100%"; // Definindo a largura como 100%
-
-// // Criação do elemento h1
-// var h1 = document.createElement("h1");
-// h1.textContent = "Escale seu Time";
-
-// // Adicionar o elemento h1 como filho do elemento header
-// header.appendChild(h1);
-
-// // Adicionar o elemento header como primeiro filho da tag body
-// document.body.insertBefore(header, document.body.firstChild);
-
 // Criação de arrays com as formações
 const formacao442 = [
   {
@@ -222,6 +198,7 @@ function createNewPlayerButton(top, left) {
   imageCampinho.style.height = "50px";
   const button = document.createElement("button");
   button.appendChild(imageCampinho);
+  button.classList = "addJogador";
   button.style.position = "absolute";
   button.style.top = `${top}px`;
   button.style.left = `${left}px`;
@@ -230,6 +207,9 @@ function createNewPlayerButton(top, left) {
   button.style.border = "none";
   button.style.cursor = "pointer";
   button.style.background = "transparent";
+
+  // Para adicionar um evento de click ao bota, para abrir a caixa de nome e número.
+  button.addEventListener("click", openPlayerDialog);
   return button;
 }
 
@@ -255,81 +235,121 @@ function handleOptionClick(event) {
 const esquemaInput = document.getElementById("esquemaInput");
 esquemaInput.addEventListener("input", handleOptionClick);
 
-// ----------------------------------------------------------------
-// Função para capturar os valores dos inputs
-// Variáveis para rastrear se as informações foram escolhidas
-let esquemaEscolhido = false;
-let tecnicoEscolhido = false;
-let jogadoresEscolhidos = 0;
-
-// Função para capturar os valores dos inputs e exibi-los na tela
-function capturarValoresInputs() {
-  // Capturando os valores dos inputs
-  let esquema = document.getElementById("esquema").value;
-  let nomeJogador = document.getElementById("nomeJogador").value;
-  let numeroJogador = document.getElementById("numeroJogador").value;
-  let posicao = document.getElementById("posicao").value;
-  let tecnico = document.getElementById("tecnico").value;
-
-  // Exibindo os valores na console
-  // console.log("Esquema Tático:", esquema);
-  // console.log("Nome do Jogador:", nomeJogador);
-  // console.log("Número do Jogador:", numeroJogador);
-  // console.log("Posição:", posicao);
-  // console.log("Nome do Técnico:", tecnico);
-
-  // Criando divs separadas para exibir as informações
-  if (!esquemaEscolhido) {
-    let esquemaDiv = document.createElement("div");
-    esquemaDiv.textContent = `Esquema Tático: ${esquema}`;
-    campinhoDiv.appendChild(esquemaDiv);
-    esquemaEscolhido = true;
-  }
-
-  if (!tecnicoEscolhido) {
-    let tecnicoDiv = document.createElement("div");
-    tecnicoDiv.textContent = "Técnico: " + tecnico;
-    campinhoDiv.appendChild(tecnicoDiv);
-    tecnicoEscolhido = true;
-  }
-
-  if (jogadoresEscolhidos < 11) {
-    let jogadorDiv = document.createElement("div");
-    jogadorDiv.textContent = nomeJogador + numeroJogador + posicao;
-    jogadorDiv.classList.add("jogador"); // Adicionando a classe "jogador" ao elemento div para estilização no CSS.
-    campinhoDiv.appendChild(jogadorDiv);
-
-    // Adicionando uma classe ao elemento div para exibi-lo em linha
-    jogadorDiv.classList.add("jogador-inline");
-
-    jogadoresEscolhidos++;
+// Função para resetar o campo e o input
+function resetField() {
+  const campinho = document.getElementById("campinho");
+  // Remove todos os elementos dentro do campo
+  campinho.innerHTML = "";
+  const esquemaInput = document.getElementById("esquemaInput");
+  // Limpa o conteúdo do input
+  esquemaInput.value = "";
+  // Limpa a caixa de dialogo com nome e número do jogador
+  const limparAddDadosJogador = document.querySelector(".dialog");
+  if (dialog) {
+    dialog.remove();
   }
 }
-// Adicionando um evento de clique ao botão "Adicionar"
-document.querySelector(".btn-add button").addEventListener("click", () => {
-  capturarValoresInputs(); // Chamando a função para capturar os valores dos inputs quando o botão é clicado
-});
 
-// // Fazendo com o que input do número do jogador aceite apenas números
-// Seleciona o input pelo ID
-let inputNumero = document.getElementById("numeroJogador");
+// Adiciona um evento de clique ao botão de reset
+const resetButton = document.getElementById("resetButton");
+resetButton.addEventListener("click", resetField);
 
-// Adiciona um listener de evento para o evento "input"
-inputNumero.addEventListener("input", function (event) {
-  // Obtém o valor atual do input
-  let valor = event.target.value;
+// Criação da caixa de diálogo que serão inseridas as informações de nome e número dos jogadores
+function openPlayerDialog() {
+  const dialog = document.createElement("div");
+  dialog.setAttribute("id", "dialog");
+  dialog.style.position = "fixed";
+  dialog.style.top = "50%";
+  dialog.style.left = "50%";
+  dialog.style.transform = "translate(-50%, -50%)";
+  dialog.style.width = "260px";
+  dialog.style.height = "170px";
+  dialog.style.padding = "8px";
+  dialog.style.borderRadius = "5px";
+  dialog.style.background = "#fff";
+  dialog.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.1)";
+  dialog.style.textAlign = "center";
 
-  // Verificando se o valor não está vazio e contém apenas números
-  if (valor !== "" && /^\d+$/.test(valor)) {
-    let numero = valor;
-    // Verificando se o número está dentro do intervalo de 1 a 99
-    if (numero < 1 || numero > 99) {
-      alert("Por favor, insira um número entre 1 e 99.");
-      // Removendo o último caractere do valor
-      event.target.value = valor.slice(0, -1);
+  // Título da caixa de diálogo
+  const title = document.createElement("h3");
+  title.textContent = "Adicionar Jogador";
+  dialog.appendChild(title);
+
+  // Campo "nome"
+  const nomeInput = document.createElement("input");
+  nomeInput.setAttribute("type", "text");
+  nomeInput.setAttribute("placeholder", "Nome");
+  nomeInput.setAttribute("id", "nomeJogador");
+  nomeInput.style.height = "32px";
+  nomeInput.style.width = "180px";
+  nomeInput.style.border = "1px solid black";
+  nomeInput.style.borderRadius = "8px";
+  nomeInput.style.textAlign = "center";
+  nomeInput.style.fontSize = "16px";
+  nomeInput.style.marginTop = "12px";
+
+  // Campo "número"
+  const numeroInput = document.createElement("input");
+  numeroInput.setAttribute("type", "text");
+  numeroInput.setAttribute("placeholder", "Número de 1 a 99");
+  numeroInput.setAttribute("id", "numeroJogador");
+  numeroInput.style.height = "32px";
+  numeroInput.style.width = "180px";
+  numeroInput.style.border = "1px solid black";
+  numeroInput.style.borderRadius = "8px";
+  numeroInput.style.textAlign = "center";
+  numeroInput.style.fontSize = "16px";
+  numeroInput.style.marginTop = "12px";
+  numeroInput.addEventListener("input", function (event) {
+    // Obtém o valor atual do input
+    let valor = event.target.value;
+
+    // Verificando se o valor não está vazio e contém apenas números
+    if (valor !== "" && /^\d+$/.test(valor)) {
+      let numero = valor;
+      // Verificando se o número está dentro do intervalo de 1 a 99
+      if (numero < 1 || numero > 99) {
+        alert("Por favor, insira um número entre 1 e 99.");
+        // Removendo o último caractere do valor
+        event.target.value = "";
+      }
+    } else if (valor !== "") {
+      // Se contém caracteres não numéricos e não está vazio, exibe uma mensagem de aviso
+      alert("Por favor, insira apenas números entre 1 e 99.");
+      event.target.value = "";
     }
-  } else if (valor !== "") {
-    // Se contém caracteres não numéricos e não está vazio, exibe uma mensagem de aviso
-    alert("Por favor, insira apenas números entre 1 e 99.");
-  }
-});
+  });
+
+  // Botão para adicionar as informações de nome e número
+  const addButton = document.createElement("button");
+  addButton.setAttribute("class", "addButton");
+  addButton.textContent = "Adicionar";
+  addButton.style.backgroundColor = "green";
+  addButton.style.borderRadius = "4px";
+  addButton.style.border = "none";
+  addButton.style.height = "32px";
+  addButton.style.width = "90px";
+  addButton.style.marginTop = "12px";
+  addButton.style.color = "white";
+  addButton.style.fontSize = "16px";
+  addButton.style.transition = "0.5s";
+  // Função para capturar os valores dos inputs e exibi-los na tela
+  addButton.addEventListener("click", () => {
+    // Capturando os valores dos inputs
+    let nomeJogador = document.getElementById("nomeJogador").value;
+    console.log(nomeJogador);
+    let numeroJogador = document.getElementById("numeroJogador").value;
+    console.log(numeroJogador);
+    // let nomeTecnico = document.getElementById("tecnico").value;
+  });
+
+  // Adiciona os campos e o botão à caixa de diálogo
+  dialog.appendChild(nomeInput);
+  dialog.appendChild(document.createElement("br")); // Quebra de linha para separar os campos
+  dialog.appendChild(numeroInput);
+  dialog.appendChild(document.createElement("br")); // Quebra de linha para separar os campos
+  dialog.appendChild(addButton);
+
+  // Adiciona a caixa de diálogo ao corpo do documento
+  document.body.appendChild(dialog);
+}
