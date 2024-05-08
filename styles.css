@@ -15,7 +15,7 @@ body {
 }
 
 header {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -83,7 +83,8 @@ label {
 }
 
 #campinho img {
-  height: 52rem;
+  max-width: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
