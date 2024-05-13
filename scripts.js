@@ -208,7 +208,7 @@ function createNewPlayerButton(top, left) {
   button.style.cursor = "pointer";
   button.style.background = "transparent";
 
-  // Para adicionar um evento de click ao bota, para abrir a caixa de nome e número.
+  // Para adicionar um evento de click ao botão, para abrir a caixa de nome e número.
   button.addEventListener("click", openPlayerDialog);
   return button;
 }
@@ -337,10 +337,36 @@ function openPlayerDialog() {
   addButton.addEventListener("click", () => {
     // Capturando os valores dos inputs
     let nomeJogador = document.getElementById("nomeJogador").value;
-    console.log(nomeJogador);
+    // console.log(nomeJogador);
     let numeroJogador = document.getElementById("numeroJogador").value;
-    console.log(numeroJogador);
+    // console.log(numeroJogador);
     // let nomeTecnico = document.getElementById("tecnico").value;
+    // Criando condicinais para que os campos nome e número não fiquem vazios
+    if (nomeJogador === "") {
+      alert("Por favor, preencha o campo de nome.");
+      return;
+    } else if (nomeJogador.length <= 3) {
+      alert("Por favor, insira um nome com mais de 3 caracteres.");
+      return;
+    }
+    if (numeroJogador === "") {
+      alert("Por favor, preencha o campo de número.");
+      return;
+    }
+    let numero = parseInt(numeroJogador, 10);
+    if (isNaN(numero) || numero < 1 || numero > 99) {
+      alert("Por favor, insira um número válido entre 1 e 99.");
+      return;
+    }
+
+    // Selecionando o botão existente
+    const playerButton = document.querySelector(".addJogador");
+    // Substituindo a imagem do botão pelos valores inseridos nos inputs
+    playerButton.innerHTML = nomeJogador + " - " + numeroJogador;
+    // Fechando o diálogo após adicionar o jogador
+    document.body.removeChild(dialog);
+
+    // console.log(nomeJogador, numero);
   });
 
   // Adiciona os campos e o botão à caixa de diálogo
